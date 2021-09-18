@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from 'carbon-components-react';
 
 import {
   Collapse,
@@ -11,7 +12,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
+  //Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -40,6 +41,7 @@ const NavBar = () => {
       <Navbar color="light" light expand="md">
         <Container>
           <NavbarBrand className="logo" />
+          <Button>Carbony</Button>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
