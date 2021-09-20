@@ -1,10 +1,9 @@
-.next-steps .fa-link {
-  margin-right: 5px;
+#mapid { 
+  height: 50%; 
 }
 
-/* Fix for use only flexbox in content area */
-.next-steps .row {
-  margin-bottom: 0;
+.next-steps .fa-link {
+  margin-right: 5px;
 }
 
 .next-steps .col-md-5 {
@@ -33,3 +32,10 @@
 .result-block-container .result-block {
   opacity: 1;
 }
+
+#profileDropDown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

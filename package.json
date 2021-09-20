@@ -1,7 +1,7 @@
 {
   "name": "auth0-react-sample",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "npm-run-all --parallel spa api-server",
     "build": "react-scripts build",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
-    "@carbon/icons-react": "^10.22.0",
+    "@carbon/icons-react": "^10.37.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
@@ -25,19 +25,25 @@
     "carbon-components-react": "^7.25.0",
     "carbon-icons": "^7.0.7",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.16.4",
     "express-jwt": "^6.0.0",
     "helmet": "^3.18.0",
     "highlight.js": "^10.0.3",
     "jwks-rsa": "^1.4.0",
+    "leaflet": "^1.7.1",
     "morgan": "^1.9.1",
     "npm-run-all": "^4.1.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-leaflet": "^3.2.1",
+    "react-leaflet-marker-layer": "^0.1.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.0",
     "reactstrap": "^8.0.0",
-    "sass": "^1.29.0"
+    "sass": "^1.29.0",
+    "styled-components": "^5.3.1",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.10.1",
@@ -49,16 +55,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
