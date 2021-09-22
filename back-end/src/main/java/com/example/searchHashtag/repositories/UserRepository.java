@@ -1,0 +1,1 @@
+package com.example.searchHashtag.repositories;import com.example.searchHashtag.models.User;import org.springframework.data.jpa.repository.JpaRepository;public interface UserRepository extends JpaRepository<User, Long> {}

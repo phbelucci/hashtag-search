@@ -1,0 +1,1 @@
+package com.example.searchHashtag.dto;public class CreateUserRequest {  private String email;  private String author;  public String getEmail() {    return email;  }  public void setEmail(String email) {    this.email = email;  }  public String getAuthor() {    return author;  }  public void setAuthor(String author) {    this.author = author;  }}
