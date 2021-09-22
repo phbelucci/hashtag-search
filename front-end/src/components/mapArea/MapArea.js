@@ -1,6 +1,5 @@
 import React from "react";
 import Maps from '../maps/Maps';
-import { Title } from "../searchArea/recentlySearchedSection/style";
 import { Container } from "./style";
 
 const MapArea = () => {

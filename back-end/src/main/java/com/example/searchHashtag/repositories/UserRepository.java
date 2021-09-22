@@ -1,1 +1,1 @@
-package com.example.searchHashtag.repositories;import com.example.searchHashtag.models.User;import org.springframework.data.jpa.repository.JpaRepository;public interface UserRepository extends JpaRepository<User, Long> {}
+package com.example.searchHashtag.repositories;import com.example.searchHashtag.models.User;import org.springframework.data.domain.Example;import org.springframework.data.jpa.repository.JpaRepository;import java.util.Optional;public interface UserRepository extends JpaRepository<User, Long> {  Optional<User> findByName(String name);}

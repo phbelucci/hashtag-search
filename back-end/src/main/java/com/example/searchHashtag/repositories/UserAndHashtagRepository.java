@@ -1,0 +1,1 @@
+package com.example.searchHashtag.repositories;import com.example.searchHashtag.models.UserHashtag;import org.springframework.data.jpa.repository.JpaRepository;import java.util.List;public interface UserAndHashtagRepository extends JpaRepository<UserHashtag, Long> {  List<UserHashtag> findAllByUserId(Long userId);}

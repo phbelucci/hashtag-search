@@ -1,32 +1,51 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, TextInput } from "carbon-components-react";
 import { Container } from './style'
-import api from "../../../api/api";
+import apiNode from "../../../api/api-node";
 
 const SearchSection = () => {
 
+  const dispatch = useDispatch();
   const [hashtagToSearch, setHashtagToSearch] = useState('');
 
   function handleChange(e) {
-    setHashtagToSearch(e.target.value.replace(' ', ''))
+    setHashtagToSearch(e.target.value.replaceAll(' ', ''))
   }
 
   async function handleClick() {
-    const qtdTwitees = 10;
-    const getTwitees = await api.get(`/tweets?hashtag=${hashtagToSearch}&count=${qtdTwitees}`);
+    const qtdTwitees = 1500;
+    const getTwitees = await apiNode.get(`/tweets?hashtag=${hashtagToSearch}&count=${qtdTwitees}`);
     const twitees = getTwitees.data.statuses;
 
-    const tweet = 'Não consigo viver sem você!'
-    const sentiment = await api.get(`/sentiment?tweet=${tweet}`);
+    const tweetWithText = twitees.filter( tweet => tweet.hasOwnProperty('text'));
 
-    console.log(sentiment.data.sentiment.document.label)
+    const locations = []
+    
+    twitees.map( tweet => {
+      if(tweet.hasOwnProperty('geo') && (tweet.geo !== null || tweet.geo !== undefined)){
+        locations.push({ lat: tweet.geo.coordinates[0], long: tweet.geo.coordinates[1] })
+      }
+      return tweet;
+    })
 
-    // const withGeo = twitees.filter( twt => {
-    //   console.log(twt.geo)
-    //   return twt.geo !== 'null'
-    // })
+    console.log(locations)
+    if(tweetWithText === null) return;
+    const sentiment = await apiNode.get(`/sentiment?tweet=${tweetWithText[0].text}`);
 
-    console.log(twitees)
+    let color;
+    if(sentiment.data.sentiment.document.label === 'neutral') color = 'gray';
+    if(sentiment.data.sentiment.document.label === 'positive') color = 'green';
+    if(sentiment.data.sentiment.document.label === 'negative') color = 'red';
+
+    dispatch({ 
+      type: 'ADD_SEARCHED_HASHTAGS',
+      searchedHashtag: {
+        hashtag: hashtagToSearch,
+        sentiment: sentiment.data.sentiment.document.label,
+        color: color
+      }
+    })
   }
 
   return (

@@ -1,7 +1,6 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
-
-
+import { Provider } from "react-redux";
 import Loading from "./components/loading/Loading";
 import NavBarCarbon from "./components/navbarCarbon/NavBarCarbon";
 import Home from "./views/home/Home";
@@ -13,11 +12,10 @@ import history from "./utils/history";
 // styles
 import "./App.css";
 
-
-
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
 import styled from "styled-components";
+import store from "./store";
 
 initFontAwesome();
 
@@ -41,18 +39,20 @@ const App = () => {
   }
 
   return (
-    <Router history={history}>
-      <Container>
-        <NavBarCarbon />
+    <Provider store={store}>
+      <Router history={history}>
         <Container>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/external-api" component={ExternalApi} />
-          </Switch>
+          <NavBarCarbon />
+          <Container>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/external-api" component={ExternalApi} />
+            </Switch>
+          </Container>
         </Container>
-      </Container>
-    </Router>
+      </Router>
+    </Provider>
   );
 };
 

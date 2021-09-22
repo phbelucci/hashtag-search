@@ -3,8 +3,10 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors")
 const { join, resolve } = require("path");
-const getSentimentWatson = require("./server-watson");
 const { query } = require("express");
+const { Http2ServerRequest } = require("http2");
+const baseJavaApiURL = 'http://localhost/8080';
+const http = require('http');
 
 const app = express();
 
@@ -30,7 +32,7 @@ app.get('/tweets', (req, res) => {
     var params = { 
         q: `#${hashtag}`,
         count: count,
-        hasgeo : 'has:geo'
+        hasgeo : true
     };
 
     const tweetsPromise = new Promise((resolve, reject) => {
@@ -66,7 +68,7 @@ app.get('/sentiment', (req, res) => {
           }
         })
         .then(response => {
-            resolve(JSON.stringify(response.result, null, 2))
+            resolve(JSON.stringify(response.result, null, 1))
         })
         .catch(err => {
           console.log('error: ', err);

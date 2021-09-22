@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tile, Tag } from "carbon-components-react";
 import {Close32} from '@carbon/icons-react'
 
 import { Container, Title, HashtagSection, HashtagAndFeeling} from './style'
+import { useSelector } from "react-redux";
 
-const RecentlySearchedSection = ({ searchedHastags }) => {
+const RecentlySearchedSection = () => {
+
+  const recentlySearchedHashtags = useSelector( state => state.searchedHashtags)
+
+  useEffect(() => {
+  },[recentlySearchedHashtags])
 
   function handleDeleteHashtag(index){
-    console.log('clicou no index...', index)
+    //TODO - implementar a possibilidade de excluir uma hashtag pesquisada
+    console.log('Apagar hashtag index: ', index)
   }
 
   return (
@@ -19,7 +26,7 @@ const RecentlySearchedSection = ({ searchedHastags }) => {
       <br/>
       <HashtagSection>
         {
-          searchedHastags.map( (searched, index) => (
+          recentlySearchedHashtags.map( (searched, index) => (
             <HashtagAndFeeling key={index}>
               
               <Tile 
@@ -33,10 +40,10 @@ const RecentlySearchedSection = ({ searchedHastags }) => {
                   style={{marginRight: "8px"}} 
                   onClick={(e) => handleDeleteHashtag(index)}
                 />
-                {searched.hashTag}
+                {searched.hashtag}
               </Tile>
               
-              <Tag 
+              <Tag
                 type={searched.color} 
                 title="Clear Filter" 
                 style={{minWidth: "100px"}}

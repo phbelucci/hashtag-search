@@ -5,8 +5,6 @@ import MapArea from "../../components/mapArea/MapArea";
 import { LogoTwitter32 } from '@carbon/icons-react'
 import { Container } from './style'
 
-
-
 const Home = () => {
 
   const {
@@ -18,7 +16,7 @@ const Home = () => {
       {
       isAuthenticated && (
         <>
-          <SearchArea />
+          <SearchArea/>
           <hr/>
           <MapArea></MapArea>
         </>
